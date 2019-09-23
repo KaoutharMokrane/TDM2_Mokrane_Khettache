@@ -8,8 +8,7 @@ import android.view.View
 import android.widget.Toast
 import com.example.tdm1_demo_dz_now.Interface.ItemClickListener
 import com.example.tdm1_demo_dz_now.PICK_CONTACT_REQUEST
-import com.example.tdm1_demo_dz_now.sendEmail
-import com.example.tdm1_demo_dz_now.sendSMS
+
 import kotlinx.android.synthetic.main.article_list_item.view.*
 
 
