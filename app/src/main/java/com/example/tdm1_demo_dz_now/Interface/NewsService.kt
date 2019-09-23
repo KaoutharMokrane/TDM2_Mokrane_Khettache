@@ -9,7 +9,7 @@ interface NewsService {
     @get:GET("https://newsapi.org/v2/sources?apiKey=7ed4f80d1228431ba67cfc1f75855ce6")
     val sources: Call<WebSite>
 
-    @get:GET("https://newsapi.org/v2/top-headlines?country=us&apiKey=7ed4f80d1228431ba67cfc1f75855ce6")
+    @get:GET("https://newsapi.org/v2/top-headlines?country=fr&apiKey=7ed4f80d1228431ba67cfc1f75855ce6")
     val news: Call<News>
 
     @GET

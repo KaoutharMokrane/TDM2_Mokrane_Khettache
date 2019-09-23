@@ -5,4 +5,7 @@
     <color name="colorPrimaryLight">#E4E4E4</color>
     <color name="colorAccent">#42A58F</color>
     <color name="colorText">#707070</color>
+    <color name="bg">#E4E4E4</color>
+    <color name="bgDark">#181616</color>
+    <color name="colorFont">#181616</color>
 </resources>

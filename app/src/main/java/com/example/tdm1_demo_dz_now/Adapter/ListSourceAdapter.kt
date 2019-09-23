@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import com.example.tdm1_demo_dz_now.AppExecutors
 import com.example.tdm1_demo_dz_now.Interface.ItemClickListener
 import com.example.tdm1_demo_dz_now.Model.WebSite
 import com.example.tdm1_demo_dz_now.R
@@ -32,6 +33,15 @@ class ListSourceAdapter(private  val context: Context,private val webSite:WebSit
 
                 Toast.makeText(context,"Will be implement",Toast.LENGTH_SHORT).show()
             }
+
+            override fun sendEmail(view: View, position: Int) {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
+
+            override fun sendSMS(view: View, position: Int) {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
+
 
         })
     }

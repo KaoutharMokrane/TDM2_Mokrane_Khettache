@@ -31,7 +31,6 @@ class PlaceholderFragment (): Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val rootView = inflater.inflate(R.layout.fragment_news, container, false)
-        rootView.card1.tv_title.text = tet
         return rootView
     }
 

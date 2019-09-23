@@ -66,6 +66,7 @@ class LoginActivity : AppCompatActivity() {
         infos[2]= user.photoUrl.toString()
         infos[3]= user.displayName.toString()
 
+
         val intent = Intent(this@LoginActivity,MainActivity::class.java)
         intent.putExtra("INFO_USER",infos)
         startActivity(intent)

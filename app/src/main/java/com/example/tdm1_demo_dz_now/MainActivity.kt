@@ -31,15 +31,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
-       // var infos =intent.getStringExtra("INFO_User")
+       //var infos =intent.getStringExtra("INFO_User")
 
         //initialize view
        // textViewName.text=getString(R.string.nav_header_title)
 
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
-        }
+
 
         val toggle = ActionBarDrawerToggle(
             this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close
@@ -107,9 +104,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 FirebaseAuth.getInstance().signOut()
             }
 
-            R.id.nav_profile-> {
 
-            }
         }
 
         drawer_layout.closeDrawer(GravityCompat.START)

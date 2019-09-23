@@ -8,13 +8,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import com.example.tdm1_demo_dz_now.*
 import com.example.tdm1_demo_dz_now.Data.ArticleEntity
-import com.example.tdm1_demo_dz_now.DetailNewsActivity
 import com.example.tdm1_demo_dz_now.Data.ArticleRoomDatabase
-import com.example.tdm1_demo_dz_now.DataFirebase
 import com.example.tdm1_demo_dz_now.Interface.ItemClickListener
 import com.example.tdm1_demo_dz_now.Model.Article
-import com.example.tdm1_demo_dz_now.R
+import com.example.tdm1_demo_dz_now.Model.Signet
 import com.google.firebase.database.DatabaseReference
 import com.squareup.picasso.Picasso
 
@@ -29,7 +28,7 @@ class ListNewsAdapter(private val articleList :List<Article>, private  val conte
     private lateinit var userId: String
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListNewsViewHolder {
         val inflater= LayoutInflater.from(parent.context)
-        val itemView=inflater.inflate(R.layout.news_layout,parent,false)
+        val itemView=inflater.inflate(R.layout.article_list_item,parent,false)
 
         return ListNewsViewHolder(itemView)
     }
@@ -37,7 +36,6 @@ class ListNewsAdapter(private val articleList :List<Article>, private  val conte
     override fun getItemCount(): Int {
         return articleList.size
     }
-
 
     override fun onBindViewHolder(holder: ListNewsViewHolder, position: Int) {
        // Picasso.with(context).load(articleList[position].urlToImage)
@@ -53,7 +51,16 @@ class ListNewsAdapter(private val articleList :List<Article>, private  val conte
             if (articleList[position].description!!.length>65){
                 holder.description.text = articleList[position].description!!.substring(0, 65) + "..."
             }
+            else {
+                holder.description.text = articleList[position].description!!
+            }
         }
+        if (articleList[position].publishedAt!=null){
+
+                holder.source.text = articleList[position].publishedAt
+
+        }
+
         Picasso.get().load(articleList[position].urlToImage).into(holder.a_news_image);
 
         holder.setItemClickListener(object: ItemClickListener
@@ -63,11 +70,11 @@ class ListNewsAdapter(private val articleList :List<Article>, private  val conte
                 detail.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
                 detail.putExtra("webURL",articleList[position].url)
-
                 context.startActivity(detail)
             }
 
-             override fun onSaveLocal( position: Int) {
+
+            override fun onSaveLocal( position: Int) {
               //  Toast.makeText(context,articleList[position].title, Toast.LENGTH_SHORT).show()
 
                  Log.i("position",position.toString())
@@ -96,16 +103,16 @@ class ListNewsAdapter(private val articleList :List<Article>, private  val conte
                      }
                  }.execute()
 
+                  //FireBase
+                database=DataFirebase.getInstance()!!
+                userId=DataFirebase.getUserId()!!
+                //   database.child("articles").setValue(articleList[position].url)
+                //  database.child("users").child(userId).child("articles").setValue(articleList[position].url)
+                var signet = Signet( articleList[position].title!!,articleList[position].url!!)
 
-                 database=DataFirebase.getInstance()!!
-                 userId=DataFirebase.getUserId()!!
-                 //   database.child("articles").setValue(articleList[position].url)
-                 //  database.child("users").child(userId).child("articles").setValue(articleList[position].url)
-                 val userReminders = database.child("articles").child(userId).child("urls")
-                 val key = userReminders.push().key
-                 val urlArticle = articleList[position].url
-                 userReminders.child(key!!).setValue(urlArticle)
-                 Toast.makeText(context,userId.toString(), Toast.LENGTH_SHORT).show()
+                val userArticles = database.child("articles").child(userId).child("urls")
+                val key = userArticles.push().key
+                userArticles.child(key!!).setValue(signet)
 
 /*                 val word = articleList[position].title.toString()
                  var article = ArticleEntity(1,articleList[position].title!!,articleList[position].content!!,
@@ -131,6 +138,24 @@ class ListNewsAdapter(private val articleList :List<Article>, private  val conte
 
                  }.start()*/
             }
+
+            override fun sendSMS(view: View,position: Int) {
+                val shareDataIntent=Intent(context, ShareViaSmsActivity::class.java)
+                shareDataIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                shareDataIntent.putExtra("webURL",articleList[position]!!.url.toString())
+                context.startActivity(shareDataIntent)
+
+            }
+            override fun sendEmail(view: View,position: Int) {
+                val shareDataIntent=Intent(context, ShareViaMailActivity::class.java)
+                shareDataIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                shareDataIntent.putExtra("subject",articleList[position]!!.title)
+                shareDataIntent.putExtra("webURL",articleList[position]!!.url)
+                context.startActivity(shareDataIntent)
+
+
+            }
+
 
 
         })
