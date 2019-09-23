@@ -19,7 +19,7 @@ import androidx.core.app.ComponentActivity
 import androidx.core.app.ComponentActivity.ExtraData
 import androidx.core.content.ContextCompat.getSystemService
 import android.icu.lang.UCharacter.GraphemeClusterBreak.T
-
+import kotlinx.android.synthetic.main.article_list_item.*
 
 
 class SimpleActivity : AppCompatActivity() {
@@ -55,17 +55,12 @@ class SimpleActivity : AppCompatActivity() {
         })
 
 
-        btn_saved.setOnClickListener{
 
-            val mDatabase = FirebaseDatabase.getInstance().getReference()
-            mDatabase.child("message").setValue("Hello, World!")
-
-           /* val database = FirebaseDatabase.getInstance()
-            val myRef = database.getReference("message")
-            myRef.setValue("Hello, World!")*/
-        }
 
     }
+
+
+
 
 
     fun delete(){

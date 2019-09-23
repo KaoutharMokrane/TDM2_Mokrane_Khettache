@@ -10,7 +10,7 @@ object Common{
     get()=RetrofitClient.getClient(BASE_URL).create(NewsService::class.java)
 
     fun getNewsAPI(category:String):String{
-        val apiUrl=StringBuilder("https://newsapi.org/v2/top-headlines?category=")
+        val apiUrl=StringBuilder("https://newsapi.org/v2/top-headlines?country=fr&category=")
             .append(category)
             .append("&apiKey=")
             .append(API_KEY)

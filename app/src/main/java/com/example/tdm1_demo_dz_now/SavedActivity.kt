@@ -38,9 +38,9 @@ class SavedActivity : AppCompatActivity() {
             override fun doInBackground(vararg voids: Void): Void? {
                 val db = ArticleRoomDatabase.getDatabase(this@SavedActivity)
                 val dao = db?.articleDao()
-savedArticles.addAll(dao!!.getArticles())
+                  savedArticles.addAll(dao!!.getArticles())
                 runOnUiThread {
-                //    val recyclerView_bookmark = findViewById<RecyclerView>(R.id.recyclerView_bookmark)
+                //    val recyclerView_bookmark = findViewById<RecyclerView>(R.id.r0ecyclerView_bookmark)
                   //
                     // recyclerView_bookmark.adapter = MainAdapter(savedArticles, this@BookmarkActivity)
 

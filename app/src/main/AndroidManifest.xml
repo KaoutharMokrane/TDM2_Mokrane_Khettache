@@ -3,6 +3,8 @@
           package="com.example.tdm1_demo_dz_now">
 
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+    <uses-permission android:name="android.permission.SEND_SMS"/>
 
     <application
             android:allowBackup="true"
@@ -11,6 +13,17 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
+        <activity android:name=".OfflineArticleActivity">
+        </activity>
+        <activity android:name=".SavedArticleActivity">
+        </activity>
+        <activity android:name=".ShareViaMailActivity">
+        </activity>
+        <activity
+                android:name=".ShareViaSmsActivity"
+                android:label="@string/title_activity_share_via_sms"
+                android:theme="@style/AppTheme.NoActionBar">
+        </activity>
         <activity android:name=".SignetsActivity">
         </activity>
         <activity
@@ -34,6 +47,15 @@
                 android:name=".newsAct"
                 android:label="@string/title_activity_news"
                 android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity android:name=".ShareDataActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.SEND"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+
+                <data android:mimeType="text/plain"/>
+            </intent-filter>
         </activity>
         <activity
                 android:name=".LoginActivity"

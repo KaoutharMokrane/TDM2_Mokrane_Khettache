@@ -6,7 +6,7 @@
     <group android:checkableBehavior="single">
         <item
                 android:id="@+id/nav_articles"
-                android:icon="@drawable/ic_menu_camera"
+                android:icon="@drawable/ic_article"
                 android:title="Articles"/>
         <item
                 android:id="@+id/nav_themes"
@@ -18,28 +18,25 @@
                 android:title="Sites"/>
         <item
                 android:id="@+id/nav_sauvgardes"
-                android:icon="@drawable/ic_menu_manage"
+                android:icon="@drawable/ic_sauve"
                 android:title="Sauvgardes"/>
         <item
                 android:id="@+id/nav_signets"
-                android:icon="@drawable/ic_menu_manage"
+                android:icon="@drawable/ic_sauve_url"
                 android:title="Signets"/>
 
         <item
                 android:id="@+id/nav_videos"
-                android:icon="@drawable/ic_menu_manage"
+                android:icon="@drawable/ic_video"
                 android:title="Vidéos"/>
     </group>
 
     <item android:title="Communicate">
         <menu>
-            <item
-                    android:id="@+id/nav_profile"
-                    android:icon="@drawable/ic_menu_share"
-                    android:title="Profil"/>
+
             <item
                     android:id="@+id/nav_sing_out"
-                    android:icon="@drawable/ic_menu_send"
+                    android:icon="@drawable/ic_exit"
                     android:title="Déconnexion"/>
         </menu>
     </item>
